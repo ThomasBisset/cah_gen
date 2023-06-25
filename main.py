@@ -16,8 +16,8 @@ white_stack = open("white.txt", "r")
 
 
 # draw a black card
-black_pick = pick_random_card(black_stack, 1)[0]
-black_pick = black_pick.replace("\n", "")
+black_pick = str(pick_random_card(black_stack, 1)[0])
+black_pick = black_pick.replace("\n", " ")
 
 
 flag = black_pick.count("_")
