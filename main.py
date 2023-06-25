@@ -45,6 +45,5 @@ elif flag > 0:
     print(black_pick.format(*white_pick))
 
 
-# TODO: Capitalisation correction
-# TODO: Respect newlines
+# TODO: Capitalisation correction?
 # TODO: Colours?
