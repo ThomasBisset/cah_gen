@@ -17,8 +17,6 @@ white_stack = open("white.txt", "r")
 
 # draw a black card
 black_pick = pick_random_card(black_stack, 1)[0]
-black_pick = "Make a haiku."
-black_pick = "You want _? You can't handle _[SAME CARD AGAIN]_!"
 
 
 flag = black_pick.count("_")
