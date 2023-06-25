@@ -17,6 +17,8 @@ white_stack = open("white.txt", "r")
 
 # draw a black card
 black_pick = pick_random_card(black_stack, 1)[0]
+black_pick = "Make a haiku."
+black_pick = "You want _? You can't handle _[SAME CARD AGAIN]_!"
 
 
 flag = black_pick.count("_")
@@ -28,20 +30,25 @@ if "Make a haiku." in black_pick:
 
 if flag == "haiku":
     print(black_pick)
-    print("[", pick_random_card(white_stack, 3), "]")
+    white_pick = pick_random_card(white_stack, 3)
+    for i in white_pick:
+        print("[" + i + "]")
 elif flag == "same":
     white_pick = pick_random_card(white_stack, 1)
+    white_pick = [i.rstrip(".") for i in white_pick]
     black_pick = black_pick.replace("_[SAME CARD AGAIN]_", "[{}]")
     black_pick = black_pick.replace("_(SAME CARD AGAIN)_", "[{}]")
-    black_pick = black_pick.replace("_", "{}")
+    black_pick = black_pick.replace("_", "[{}]")
     print(black_pick.format(*white_pick, *white_pick))
 elif flag == 0:
+    white_pick = "[" + str(*pick_random_card(white_stack, 1)) + "]"
     print(black_pick)
-    print("[" + str(*pick_random_card(white_stack, 1)) + "]")
+    print(white_pick)
 elif flag > 0:
-    black_pick = black_pick.replace("_", "[{}]")
     white_pick = pick_random_card(white_stack, flag)
     white_pick = [i.rstrip(".") for i in white_pick]
+    white_pick = [i.strip("\n") for i in white_pick]
+    black_pick = black_pick.replace("_", "[{}]")
     print(black_pick.format(*white_pick))
 
 
