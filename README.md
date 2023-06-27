@@ -11,7 +11,8 @@ Because I can.
 
 ## Who?
 
-I made this. But I did get the text files with the cards from [Chris Hallberg](https://crhallberg.com/cah/); thanks!
+I made this. But I did get a JSON file with the cards from [Chris Hallberg](https://crhallberg.com/cah/); thanks!
 
 Cards Against Humanity released the game under a Creative Commons License, which means I can legally make this as well, 
 so thanks for that.
+

@@ -5,7 +5,7 @@ import json
 
 # load json
 # download compact JSON from https://crhallberg.com/cah/
-with open("cah-cards-compact.json") as json_file:
+with open("official.json") as json_file:
     full_deck = json.load(json_file)
 
 
@@ -14,10 +14,15 @@ black = random.choice(full_deck["black"])
 
 
 # formatting black cards
-black["text"] = black["text"].replace("_(SAME CARD AGAIN)_", "[{}]")
-black["text"] = black["text"].replace("_[SAME CARD AGAIN]_", "[{}]")
 black["text"] = black["text"].replace("_", "[{}]")
 black["text"] = black["text"].replace(r"\n", "\n")
+
+
+# special cases
+black["text"] = black["text"].replace("_(SAME CARD AGAIN)_", "[{}]")
+black["text"] = black["text"].replace("_[SAME CARD AGAIN]_", "[{}]")
+if black["text"] == "What are the 3 secrets for a long and happy marriage?":
+    black["pick"] = 3
 
 
 # pick random white card(s) and formatting them
