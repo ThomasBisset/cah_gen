@@ -33,10 +33,14 @@ for i in range(black["pick"]):
 
 # print to screen if card does not have blank spaces
 if black["text"].find("[{}]") == -1:
-    print(black["text"])
+    answer = []
+    prompt = black["text"]
     for i in white:
-        print("[", end="")
-        print(i, end=".]\n")
+        answer.append(i)
+    output = prompt + "\n" + str(*answer)
 # print to screen if there are blank spaces
 else:
-    print(black["text"].format(*white))
+    output = black["text"].format(*white)
+
+
+print(output)
