@@ -5,7 +5,7 @@ import json
 
 # load json
 # download compact JSON from https://crhallberg.com/cah/
-with open("official.json") as json_file:
+with open("cah-cards-compact.json") as json_file:
     full_deck = json.load(json_file)
 
 
@@ -37,7 +37,7 @@ if black["text"].find("[{}]") == -1:
     prompt = black["text"]
     for i in white:
         answer.append(i)
-    output = prompt + "\n" + str(*answer)
+    output = prompt + "\n" + "[" + str(*answer) + "]"
 # print to screen if there are blank spaces
 else:
     output = black["text"].format(*white)
