@@ -1,18 +1,26 @@
 # import libraries
+import os.path
 import random
 import json
+import argparse
 
 
-# load json
-# download compact JSON from https://crhallberg.com/cah/
-with open("cah-cards-compact.json") as json_file:
-    deck = json.load(json_file)
+def random_card(deck_json):
+    # error message in case JSON does not exist
+    error404 = "404: The JSON file does not exist. \n" \
+               "Download the Compact JSON from https://crhallberg.com/cah/ and " \
+               "ensure it exists in the same directory as the executable script"
 
+    # checks to make sure JSON exists
+    if not os.path.exists(deck_json):
+        return "ERROR " + error404
 
-def random_card(full_deck):
+    # loads JSON file
+    with open(deck_json) as json_file:
+        deck = json.load(json_file)
 
     # pick random black card
-    black = random.choice(full_deck["black"])
+    black = random.choice(deck["black"])
 
     # formatting black cards
     black["text"] = black["text"].replace("_", "[{}]")
@@ -27,7 +35,7 @@ def random_card(full_deck):
     # pick random white card(s) and formatting them
     white = []
     for i in range(black["pick"]):
-        white.append(random.choice(full_deck["white"]).rstrip(".").replace(r"\n", "\n"))
+        white.append(random.choice(deck["white"]).rstrip(".").replace(r"\n", "\n"))
 
     # print to screen if card does not have blank spaces
     if black["text"].find("[{}]") == -1:
@@ -43,4 +51,12 @@ def random_card(full_deck):
     return output
 
 
-print(random_card(deck))
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--json", type=str, default="cah-cards-compact.json")
+    args = parser.parse_args()
+    print(random_card(deck_json=args.json))
+
+
+if __name__ == "__main__":
+    main()
