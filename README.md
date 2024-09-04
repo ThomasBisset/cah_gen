@@ -1,4 +1,4 @@
-# cah_gen 
+# fortune-cah
 
 ## Huh?
 
